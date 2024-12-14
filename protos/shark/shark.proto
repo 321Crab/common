@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package shark;
+
+message GetAclRequest {}
+
+message GetAclResponse {}
+
+service SharkService {
+  rpc GetAcl(GetAclRequest) returns (GetAclResponse) {}
+}
