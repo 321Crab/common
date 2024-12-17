@@ -2,9 +2,33 @@ syntax = "proto2";
 
 package shark;
 
-message GetAclRequest {}
+message GetAclRequest {
+  optional string resource = 1;
+  optional string userId = 2;
+}
 
-message GetAclResponse {}
+message Group {
+  // The parents of this group.
+  repeated Group parents = 1;
+  
+}
+message User {
+  // The parents of this user.
+  repeated Group parents = 1;
+  
+}
+
+message Resource {
+  // The groups that this resource is shared with.
+  repeated Group groups = 1;
+  // The users that this resource is shared with.
+  repeated User users = 2;
+}
+
+message GetAclResponse {
+  optional User user = 1;
+  optional Resource resource = 2;
+}
 
 service SharkService {
   rpc GetAcl(GetAclRequest) returns (GetAclResponse) {}
