@@ -8,13 +8,14 @@ message GetAclRequest {
 }
 
 message Group {
+  optional string group_id = 1;
   // The parents of this group.
-  repeated Group parents = 1;
-  
+  repeated Group parents = 2;
 }
 message User {
+  optional string user_id = 1;
   // The parents of this user.
-  repeated Group parents = 1;
+  repeated Group parents = 2;
   
 }
 
