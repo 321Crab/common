@@ -1,19 +1,20 @@
-syntax = "proto2";
+edition = "2023";
 
 package shark;
 
 message GetAclRequest {
-  optional string resource = 1;
-  optional string userId = 2;
+  // The resource that this request concerns.
+  string resourceId = 1;
+  string userId = 2;
 }
 
 message Group {
-  optional string group_id = 1;
+  string group_id = 1;
   // The parents of this group.
   repeated Group parents = 2;
 }
 message User {
-  optional string user_id = 1;
+  string user_id = 1;
   // The parents of this user.
   repeated Group parents = 2;
   
@@ -27,10 +28,19 @@ message Resource {
 }
 
 message GetAclResponse {
-  optional User user = 1;
-  optional Resource resource = 2;
+  User user = 1;
+  Resource resource = 2;
+}
+
+// TBD
+message SetAclRequest {
+}
+
+// TBD
+message SetAclResponse {
 }
 
 service SharkService {
   rpc GetAcl(GetAclRequest) returns (GetAclResponse) {}
+  rpc SetAcl(SetAclRequest) returns (SetAclResponse) {}
 }
