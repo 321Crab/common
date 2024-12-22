@@ -32,15 +32,28 @@ message GetAclResponse {
   Resource resource = 2;
 }
 
-// TBD
-message SetAclRequest {
+message CreateResourceRequest {
+  // the ACLs of this resource. Will also be shared with all ancestors of the shared groups / users.
+  Resource resource = 1;
+  string resourceId = 2;
 }
 
-// TBD
-message SetAclResponse {
+message CreateResourceResponse {}
+
+message CreateAclRequest {
+  oneof creation_type {
+    User user = 1;
+    Group group = 2;
+  }
+}
+
+message CreateAclResponse {
+
 }
 
 service SharkService {
   rpc GetAcl(GetAclRequest) returns (GetAclResponse) {}
-  rpc SetAcl(SetAclRequest) returns (SetAclResponse) {}
+  rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse) {}
+  rpc CreateAcl(CreateAclRequest) returns (CreateAclResponse) {}
+  
 }
