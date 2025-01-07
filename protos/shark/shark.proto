@@ -24,7 +24,7 @@ message User {
   // The parents of this user.
   repeated Group parents = 2;
   // An optional name for this group. Should be human readable.
-  optional string group_name = 3;
+  optional string user_name = 3;
 }
 
 message Resource {
