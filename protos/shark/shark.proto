@@ -1,4 +1,7 @@
-edition = "2023";
+syntax = "proto3";
+
+option java_package = "dev.crab.shark.protos";
+option java_multiple_files = true;
 
 package shark;
 
@@ -13,11 +16,11 @@ message Group {
   // The parents of this group.
   repeated Group parents = 2;
 }
+
 message User {
   string user_id = 1;
   // The parents of this user.
   repeated Group parents = 2;
-  
 }
 
 message Resource {
@@ -55,5 +58,4 @@ service SharkService {
   rpc GetAcl(GetAclRequest) returns (GetAclResponse) {}
   rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse) {}
   rpc CreateAcl(CreateAclRequest) returns (CreateAclResponse) {}
-  
 }
