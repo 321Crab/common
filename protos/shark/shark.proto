@@ -15,18 +15,22 @@ message Group {
   string group_id = 1;
   // The parents of this group.
   repeated Group parents = 2;
+  // An optional name for this group. Should be human readable.
+  optional string group_name = 3;
 }
 
 message User {
   string user_id = 1;
   // The parents of this user.
   repeated Group parents = 2;
+  // An optional name for this group. Should be human readable.
+  optional string group_name = 3;
 }
 
 message Resource {
-  // The groups that this resource is shared with.
+  // The groups that this resource is shared with. One needs to either specify the user_id or the group_name. Parents will be ignored.
   repeated Group groups = 1;
-  // The users that this resource is shared with.
+  // The users that this resource is shared with. One needs to either specify the user_id or the user_name. Parents will be ignored.
   repeated User users = 2;
 }
 
